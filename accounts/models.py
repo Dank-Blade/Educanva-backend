@@ -36,9 +36,14 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     username = None
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
     email = models.EmailField(('email address'), unique=True)
-
+    # OPTIONS = (
+    #     (True, 'Teacher'),
+    #     (False, 'Student'),
+    # )
+    # user_type = models.BooleanField(choices=OPTIONS)
 
     objects = UserManager()
 
