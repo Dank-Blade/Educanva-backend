@@ -39,11 +39,11 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(('email address'), unique=True)
-    # OPTIONS = (
-    #     (True, 'Teacher'),
-    #     (False, 'Student'),
-    # )
-    # user_type = models.BooleanField(choices=OPTIONS)
+    OPTIONS = (
+        (True, 'Teacher'),
+        (False, 'Student'),
+    )
+    user_type = models.BooleanField(choices=OPTIONS)
 
     objects = UserManager()
 
