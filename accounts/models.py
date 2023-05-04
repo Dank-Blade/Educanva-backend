@@ -23,6 +23,7 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('user_type', 'Admin')
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -40,10 +41,11 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=255)
     email = models.EmailField(('email address'), unique=True)
     OPTIONS = (
-        (True, 'Teacher'),
-        (False, 'Student'),
+        ('Admin', 'Admin'),
+        ('Teacher', 'Teacher'),
+        ('Student', 'Student'),
     )
-    user_type = models.BooleanField(choices=OPTIONS)
+    user_type = models.CharField(choices=OPTIONS, max_length=100, default=OPTIONS[2])
 
     objects = UserManager()
 
