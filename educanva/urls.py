@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('file/', include('file_management.urls')),
+    path('module/', include('module.urls')),
     # path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('api/login/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
