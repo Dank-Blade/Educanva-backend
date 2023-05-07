@@ -23,7 +23,7 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = UserSerializer
     
 
-class UserView(generics.CreateAPIView):
+class UserView(generics.ListCreateAPIView):
     # def post(self, request):
     #     serializer = UserSerializer(data=request.data)
     #     serializer.is_valid(raise_exception=True)
@@ -31,12 +31,20 @@ class UserView(generics.CreateAPIView):
     #     return Response(serializer.data)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
+# class UserDelete(generics.DestroyAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#     # permission_classes = [permissions.IsAuthenticated]
+    
+#     def delete(self, request, *args, **kwargs):
+#         return self.destroy(request, *args, **kwargs)
     
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod

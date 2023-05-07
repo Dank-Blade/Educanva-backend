@@ -45,7 +45,7 @@ class User(AbstractUser):
         ('Teacher', 'Teacher'),
         ('Student', 'Student'),
     )
-    user_type = models.CharField(choices=OPTIONS, max_length=100, default=OPTIONS[2])
+    user_type = models.CharField(choices=OPTIONS, max_length=100)
 
     objects = UserManager()
 
