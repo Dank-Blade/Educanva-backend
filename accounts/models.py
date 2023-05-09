@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
-
+from module.models import Module
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -46,6 +46,7 @@ class User(AbstractUser):
         ('Student', 'Student'),
     )
     user_type = models.CharField(choices=OPTIONS, max_length=100)
+    modules = models.ManyToManyField(Module, related_name='users', blank=True)
 
     objects = UserManager()
 
