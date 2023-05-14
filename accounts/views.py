@@ -21,15 +21,15 @@ class RegisterView(generics.CreateAPIView):
 class UserView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserUpdateSerializer
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [permissions.IsAdminUser]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAdminUser]
     
     
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserUpdateSerializer
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
     
 
 class UserModuleView(generics.RetrieveUpdateDestroyAPIView):
