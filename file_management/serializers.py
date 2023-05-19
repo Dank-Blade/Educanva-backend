@@ -26,9 +26,18 @@ class FileSerializer(serializers.ModelSerializer):
     
 class SubmissionSerializer(serializers.ModelSerializer):
     
+    def getFullname(self, obj):
+	    return obj.uploaded_by.first_name + ' ' + obj.uploaded_by.last_name
+ 
+    def getAssignmentName(self, obj):
+        return obj.assignment_id.name
+ 
+    uploaded_by_fullname = serializers.SerializerMethodField("getFullname")
+    assignment_name = serializers.SerializerMethodField("getAssignmentName")
+
     class Meta:
+        fields = ['id', 'assignment_id', 'assignment_name', 'file', 'uploaded_by', 'uploaded_by_fullname', 'module', 'marks', 'marked_by']
         model = Submission
-        fields = ('id', 'assignment_id', 'file', 'uploaded_by', 'module', 'marks', 'marked_by')
         
 
 

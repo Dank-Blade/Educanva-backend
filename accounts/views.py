@@ -22,7 +22,7 @@ class UserView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserUpdateSerializer
     authentication_classes = [JWTAuthentication]
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
     
     
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
