@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'file_management',
     'module',
+    'quiz',
 ]
 
 MIDDLEWARE = [
@@ -72,10 +73,10 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     'anon': '10/day',
-    #     'user': '100/day'
-    # }
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/day',
+        'user': '10000/day'
+    }
 }
 
 
@@ -142,15 +143,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-    
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'educanva',
-    #     'USER': 'root',
-    #     'password': '',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
 }
 
 
@@ -200,3 +192,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'aashishtuladhar09@gmail.com'  # The email address from which you want to send the email
+EMAIL_HOST_PASSWORD = 'uzidcqwromkeyrht'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

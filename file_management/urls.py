@@ -1,9 +1,8 @@
 from django.urls import path
-from .views import ContentCreateView, ContentDownloadView, ContentListAPIView, ContentUpdateView, ContentDetailView, SubmissionCreateView, SubmissionListAPIView, SubmissionDetailView, SubmissionMarksUpdateView, SubmissionUpdateView
+from .views import ContentCreateView, ContentListAPIView, ContentUpdateView, ContentDetailView, SubmissionCreateView, SubmissionListAPIView, SubmissionDetailView, SubmissionMarksUpdateView, SubmissionUpdateView
 
 urlpatterns = [
     path('upload/', ContentCreateView.as_view(), name='file_upload'),
-    path('download/<int:content_id>/', ContentDownloadView.as_view(), name='file_download'),
     path('list/<int:module_id>/', ContentListAPIView.as_view(), name='file_list'),
     path('content/<int:pk>/', ContentDetailView.as_view(), name='content_detail'),
     path('content/update/<int:pk>/', ContentUpdateView.as_view(), name='content_update'),
